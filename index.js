@@ -4,15 +4,17 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+const config = require('./config/key');
+
 const { User } = require('./model/user');
 
-mongoose.connect('mongodb+srv://rongbangye:abc1234@react-blog.lfmpe.mongodb.net/<dbname>?retryWrites=true&w=majority', 
+mongoose.connect(config.mongoURI, 
     {useNewUrlParser: true }).then(() => console.log('DB connected'))
                              .catch(err => console.error('err'));
 
 
 app.get('/', (req, res) => {
-    res.send("hello");
+    res.send("hello Dev");
 });
 
 app.use(bodyParser.urlencoded({ extended : true }));
